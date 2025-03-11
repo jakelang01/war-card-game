@@ -1,17 +1,28 @@
-import deck
-import card
+from deck import Deck
+from card import Card
+
+# Author: Jake Langenfeld
+# Date Created: 03/08/2025
 
 class Hand:
-    def __init__(self, player, deck):
-        self.player = player
-        self.deck = []
+    def __init__(self):
+        self.hand: list[Card] = []
         
-    def __repr__(self):
-        for obj in self.deck:
-            print(obj)
+    def __str__(self) -> str:
+        return ", ".join(str(card) for card in self.hand)
             
-    def add_card(self, card):
-        self.deck.append(card)
+    def add_card(self, card: Card) -> None:
+        self.hand.append(card)
         
-    def get_top_card(self):
-        return self.deck.pop(0)
+    def get_top_card(self) -> Card:
+        return self.hand.pop(0)
+    
+    def get_bottom_card(self) -> Card:
+        return self.hand[-1]
+
+    def get_deck_size(self) -> int:
+        size: int = 0
+        for card in self.hand:
+            size += 1
+            
+        return size

@@ -1,33 +1,34 @@
-import random
-import card
+from random import shuffle
+from card import Card
 
 # Author: Jake Langenfeld
 # Date Created: 03/08/2025
 
 # The Deck class is defined by a deck of cards. 
-# The contructor creates a standard 52 card deck with combinations of number 1-13 and suits of Hearts, Spades, Diamonds, and Clubs. 
-# Otherwise, the Deck class can be defined with a specific number of cards with each suit.
+# The contructor creates a standard 52 card deck with combinations of ranks 1-13 and suits of Hearts, Spades, Diamonds, and Clubs. 
 class Deck:
+    ranks: list[int] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+    suits: list[str] = ["Hearts", "Diamonds", "Spades", "Clubs"]
+        
     def __init__(self):
-        self.deck = []
+        self.deck: list[Card] = self.build_deck()
         
-    def build_deck(self):
-        numbers = ["Ace", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King"]
-        suits = ["Heart", "Diamond", "Spade", "Club"]
-        
-        self.deck = [card.Card(num, suit) for num in numbers for suit in suits]
+    def build_deck(self) -> list[Card]:
+        return [Card(rank, suit) for rank in Deck.ranks for suit in Deck.suits]
     
-    def __repr__(self):
-        for obj in self.deck:
-            print(obj)
+    def __str__(self) -> str:
+        return ", ".join(str(card) for card in self.deck)
 
     # The shuffle function is used to randomly shuffle a deck of cards.
-    def shuffle(self):
-        return random.shuffle(self.deck)
+    def shuffle(self) -> None:
+        shuffle(self.deck)
     
-    def get_top_card(self):
+    def get_top_card(self) -> Card:
         return self.deck.pop(0)
     
-deck1 = Deck()
-deck1.build_deck()
-deck1.__str__()
+    def get_deck_size(self) -> int:
+        size: int = 0
+        for card in self.deck:
+            size += 1
+            
+        return size
