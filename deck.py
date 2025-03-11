@@ -5,9 +5,9 @@ from card import Card
 # Date Created: 03/08/2025
 
 # The Deck class is defined by a deck of cards. 
-# The contructor creates a standard 52 card deck with combinations of ranks 1-13 and suits of Hearts, Spades, Diamonds, and Clubs. 
+# The contructor creates a standard 52 card deck with combinations of ranks 2-14 (Ace is played as a high card) and suits of Hearts, Spades, Diamonds, and Clubs. 
 class Deck:
-    ranks: list[int] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+    ranks: list[int] = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
     suits: list[str] = ["Hearts", "Diamonds", "Spades", "Clubs"]
         
     def __init__(self):

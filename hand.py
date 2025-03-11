@@ -26,3 +26,6 @@ class Hand:
             size += 1
             
         return size
+    
+    def clear_hand(self) -> None:
+        self.hand.clear()
