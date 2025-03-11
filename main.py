@@ -249,4 +249,13 @@ def simulate_war_game() -> None:
 
 # This runs the main function which emulates the card game, War.
 if __name__ == "__main__":
-    simulate_war_game()
+    choice: str = input("Type 1 to play War manually or Type 2 to simulate War. ")
+    
+    while choice != "1" and choice != "2":
+        print("Invalid Input. Try Again.")
+        choice = input("Type 1 to play War manually or Type 2 to simulate War. ")
+    
+    if choice == "1":
+        war_game()
+    else:
+        simulate_war_game()
